@@ -1,5 +1,8 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
 import { config } from 'dotenv'
+import cors from 'cors'
+
+import { router } from './routes'
 
 config()
 
@@ -7,6 +10,16 @@ const port = process.env.PORT || 3000
 
 const app = express()
 
-app.get('/', (req: Request, res: Response) => res.send('Hello!'))
+app.use(cors)
 
-app.listen(port, () => console.log('listen on http://localhost:' + port))
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+)
+
+app.use(express.json())
+
+app.use('/', router)
+
+app.listen(port, () => console.log('listen on port' + port))
