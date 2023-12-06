@@ -5,6 +5,7 @@
     "repository": "https://github.com/Odisseu93/openai-api"
 }
 ```
+
 Back end criado para fazer integração com a API da [openai](https://openai.com/)
 
 ## Services disponíveis
@@ -44,6 +45,7 @@ yarn dev
 ---
 ---
 ## <a id="product-description-generator"></a> Gerador de descricao de produtos
+https://github.com/Odisseu93/openai-api/assets/76600539/57716cf6-451c-4b93-a426-5b1d6ec5f68a
 ### Como usar :grey_question::
 - endpoint
 ```
