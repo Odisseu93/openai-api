@@ -3,6 +3,9 @@ import { OpenaiController } from '../controllers/openai.controller'
 
 const router = Router()
 
-router.post('/', OpenaiController.generateDescription)
+router.post(
+  '/generate/product-description',
+  OpenaiController.generateDescription
+)
 
 export { router }
