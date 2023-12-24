@@ -22,16 +22,18 @@ export class OpenaiController {
         .json({ message: 'The name and category are required!' })
 
     try {
-      const { choices } = await openAiApiService.productDescriptionGenerator(
+      const stream = await openAiApiService.productDescriptionGenerator(
         name,
         category,
         additionalInformation || undefined
       )
 
-      res.status(200).json({
-        messege: 'Product description generated successfully!',
-        description: choices[0]['message']['content'],
-      })
+      for await (const chunk of stream) {
+        const content = chunk.choices[0]?.delta?.content || ''
+        res.status(200).write(content)
+      }
+
+      res.end()
     } catch (err: any) {
       res.status(500).json({ message: err.message })
     }
