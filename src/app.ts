@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express'
 import { config } from 'dotenv'
-import cors from 'cors'
 
 import { router } from './routes'
 
@@ -17,8 +16,6 @@ app.use(
 )
 
 app.use(express.json())
-
-app.use(cors())
 
 app.use('/', router)
 
