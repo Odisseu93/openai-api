@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express'
 import { config } from 'dotenv'
 
 import { router } from './routes'
+import cors from './libs/cors'
 
 config()
 
@@ -14,6 +15,8 @@ app.use(
     extended: true,
   })
 )
+
+app.use(cors)
 
 app.use(express.json())
 
