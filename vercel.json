@@ -11,10 +11,13 @@
     }
   ],
   "routes": [
-    {
-      "src": "(.*)",
-      "dest": "src/app.ts",
-       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
-    }
+      {
+          "src": "(.*)",
+          "dest": "src/app.ts",
+          "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+          "headers": {
+              "Access-Control-Allow-Origin": "*"
+          }
+      }
   ]
 }
