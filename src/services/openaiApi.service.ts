@@ -17,13 +17,11 @@ class OpenAiApiService {
     additionalInformation?: string
   ) {
     const userMessage = `Crie uma descrição para o anúncio de um produto para o meu e-commerce.
-    Este anúncio deve ser composto da seguinte forma: 
-    - título/nome do produto (1 linha);
-    - descrição geral do produto (2-3 linhas);
-    - benefícios ao adquirir o produto (1 linha).
-    - Informações adicionais (máximo 2 linhas).
+    Este anúncio deve seguir a seguinte estrutura: título/nome do produto (1 linha), 
+    descrição geral do produto (2-3 linhas), benefícios ao adquirir o produto (1 linha), 
+    informações adicionais (máximo 2 linhas), itens inclusos(1-2 linhas).
 
-    Dados do produto: 
+    aqui estão os dados do produto: 
     - título (nome): ${name};
     - categoria: ${category};
     ${additionalInformation ? additionalInformation : ''}
