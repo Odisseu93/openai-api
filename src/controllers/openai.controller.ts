@@ -21,6 +21,7 @@ export class OpenaiController {
         .status(400)
         .json({ message: 'The name and category are required!' })
 
+    const startTime = new Date()
     try {
       const stream = await openAiApiService.productDescriptionGenerator(
         name,
@@ -32,6 +33,10 @@ export class OpenaiController {
         const content = chunk.choices[0]?.delta?.content || ''
         res.status(200).write(content)
       }
+
+      const endTime = new Date()
+      const executionTime = endTime.getTime() - startTime.getTime()
+      console.log('Tempo de execução:', executionTime, 'ms')
 
       res.end()
     } catch (err: any) {
