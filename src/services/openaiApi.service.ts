@@ -35,6 +35,17 @@ class OpenAiApiService {
 
     return stream
   }
+
+  async imageGenerator(imageDescription: string) {
+    const image = await this._openaiClient.images.generate({
+      model: 'dall-e-2',
+      prompt: imageDescription,
+      n: 1,
+      size: '1024x1024',
+    })
+
+    return image.data
+  }
 }
 
 const openAiApiService = new OpenAiApiService(process.env.OPENAI_API_KEY || '')

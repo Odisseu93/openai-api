@@ -43,4 +43,26 @@ export class OpenaiController {
       res.status(500).json({ message: err.message })
     }
   }
+
+  static async generateImage(
+    req: TypedRequestBody<{
+      imageDescription: string
+    }>,
+    res: Response
+  ) {
+    const { imageDescription } = req.body
+
+    if (!imageDescription)
+      return res
+        .status(400)
+        .json({ message: 'The image description is required!' })
+
+    try {
+      const image = await openAiApiService.imageGenerator(imageDescription)
+
+      res.status(200).send(image)
+    } catch (err: any) {
+      res.status(500).json({ message: `Unexpected error: \n${err.message}` })
+    }
+  }
 }

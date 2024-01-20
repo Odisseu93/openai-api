@@ -8,4 +8,6 @@ router.post(
   OpenaiController.generateDescription
 )
 
+router.post('/generate/image', OpenaiController.generateImage)
+
 export { router }
